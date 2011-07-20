@@ -1,0 +1,49 @@
+﻿/* Portfolio page */
+.portfolio { background-color: #fff; padding: 16px; }
+
+.portfolio #tabs ul li a { font-size: 14px; font-weight: normal; }
+
+.portfolio .logo { text-align: center; display: block; float: left; padding: 4px 12px 0 16px; }
+.portfolio .companyHeader { width: 450px; height: 80px; }
+    .portfolio h1 { font-size: 26px; font-weight:normal; color: #390; margin:0; }
+    .portfolio .location { padding-left: 112px; font-size: 14px; }
+.portfolio .companyDetails { width: 318px; clear: both }
+    .portfolio .companyDetails p.description { padding: 8px 0 8px 4px }
+    .portfolio .companyDetails p.contact { padding: 12px 0 0 0; }
+    .portfolio .companyDetails p.field { padding: 4px 0 4px 4px }
+    .portfolio .companyDetails .skills { padding: 12px 0 0 0 }
+
+.portfolio .fieldLabel { width: 100px; display:block; font-weight:bold; float:left }
+     
+.portfolio .people{ padding: 8px; margin-top:12px; background-color: #efc; 
+                    -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+    .portfolio .people li { margin-bottom:12px; }
+    .portfolio .people img { clear:both; float:left }
+    .portfolio .people h4, .portfolio .people p { margin-left: 92px }
+    
+.portfolio .pages { padding-top: 12px }
+.portfolio .page { display: none; text-align: center; }
+.portfolio .page .htmlContent { text-align: left }
+
+.portfolio .pageNumber { margin-left: 120px; height:36px; margin-top: 8px; font-size: 11px; color: #666; }
+.portfolio .pageNumber span { float: left; display: block; margin-top: 4px; }
+.portfolio .pageNumber ul { float: left; }
+.portfolio .pageNumber li { display: block; float: left;  }
+    .portfolio .pageNumber li a { display: block; padding: 6px 8px 8px 9px; margin: 0 2px 0 2px; color: #eee; font-weight: bold;
+                                  text-decoration: none; color: #999; background: url(/images/li-bullet.png) no-repeat; }
+    .portfolio .pageNumber li a.selected { background: url(/images/li-bullet-selected.png) no-repeat; }
+
+.portfolio .projectDesc { margin: 0 20px 0 40px; text-align: left; }
+    .portfolio .projectDesc h3 { margin-top:12px; margin-bottom: 8px; }
+    .portfolio .projectDesc p{ margin-bottom: 8px; }
+
+.portfolio .individualLinks { margin-top: 12px; }
+    .portfolio .individualLinks h3 { padding-bottom: 4px }
+    .portfolio .individualLinks li { padding: 4px; }
+
+.portfolio .listing { margin: 20px 0 0 80px; }
+    .portfolio .listing img { margin-right: 40px; float: left }
+    .portfolio .listing h3, .portfolio .listing p { margin-left: 140px; }
+    .portfolio .listing li { padding-bottom: 12px }
+
+

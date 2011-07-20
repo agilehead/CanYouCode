@@ -1,0 +1,14 @@
+﻿hello {0},
+
+You have been invited to give a quote for the Project - {1}, http://canyoucode.com/Projects/{2}.
+
+Description: {3}
+
+Attachment: http://canyoucode.com/Projects/Attachments/{4}
+
+Budget: {5}
+
+To give a quote for this project use this link - http://canyoucode.com/Projects/{2}.
+
+Thank you,
+Team Canyoucode.

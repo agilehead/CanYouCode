@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" name="" connectionString="Data Source=.;Initial Catalog=CanYouCodeDb;Integrated Security=True;Connect Timeout=10;User Instance=False" xmlns="http://schemas.microsoft.com/dsltools/AgileModeler">
+  <types>
+    <modelClass name="Account" tableName="Account" derivesOrImplements="EntityBase">
+      <targets>
+        <association Id="94097765-75ac-4830-99c0-57590a71ed50" end1Multiplicity="ZeroOne" end1RoleName="Account" end2RoleName="AccountAlert" end1NavigationProperty="Alerts" end2NavigationProperty="Account" name="FK_AccountAlert_Account_Account_Alerts" isEdited="false">
+          <modelClassMoniker name="//AccountAlert" />
+        </association>
+        <association Id="2b237f5a-69e4-4dc3-8664-2a9191057604" end1RoleName="Account" end2Multiplicity="One" end2RoleName="Employer" end1NavigationProperty="Employer" end2NavigationProperty="Account" name="FK_Employer_Account_Account_Employer_OneToOne" isEdited="false">
+          <modelClassMoniker name="//Employer" />
+        </association>
+        <association Id="213a8824-b2ff-4d49-8ac3-e8dc0bee407b" end1RoleName="Account" end2Multiplicity="One" end2RoleName="Company" end1NavigationProperty="Company" end2NavigationProperty="Account" name="FK_Company_Account_Account_Company_OneToOne" isEdited="false">
+          <modelClassMoniker name="//Company" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="DateAdded" isEdited="false" isPrimaryKey="false" databaseColumnName="DateAdded" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Email" isEdited="false" isPrimaryKey="false" databaseColumnName="Email" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="LastLoginDate" isEdited="false" isPrimaryKey="false" databaseColumnName="LastLoginDate" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Password" isEdited="false" isPrimaryKey="false" databaseColumnName="Password" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Phone" isEdited="false" isPrimaryKey="false" databaseColumnName="Phone" nullable="true" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Rating" isEdited="false" isPrimaryKey="false" databaseColumnName="Rating" nullable="false" type="Int32" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="4" isIdentity="false" isUnique="false" />
+        <modelField name="Status" isEdited="false" isPrimaryKey="false" databaseColumnName="Status" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Type" isEdited="false" isPrimaryKey="false" databaseColumnName="Type" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Username" isEdited="false" isPrimaryKey="false" databaseColumnName="Username" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Alerts" isEdited="false" multiplicity="ZeroMany" association="FK_AccountAlert_Account_Account_Alerts" type="ICollection&lt;AccountAlert&gt;" isForeignkey="false" />
+        <navigationProperty name="Employer" isEdited="false" multiplicity="One" association="FK_Employer_Account_Account_Employer_OneToOne" type="Employer" isForeignkey="false" />
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_Company_Account_Account_Company_OneToOne" type="Company" isForeignkey="false" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Account_Tenant_Tenant_Accounts" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="AccountAlert" tableName="AccountAlert">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="AccountId" isEdited="false" isPrimaryKey="false" databaseColumnName="Account" nullable="true" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Status" isEdited="false" isPrimaryKey="false" databaseColumnName="Status" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Message" isEdited="true" isPrimaryKey="false" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="4000" isIdentity="false" isUnique="false" />
+        <modelField name="Type" isEdited="true" isPrimaryKey="false" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Account" isEdited="false" multiplicity="ZeroOne" association="FK_AccountAlert_Account_Account_Alerts" type="Account" isForeignkey="true" foreignkeyColumn="Account" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_AccountAlert_Tenant_Tenant_AccountAlerts" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Attachment" tableName="Attachment" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="DateAdded" isEdited="false" isPrimaryKey="false" databaseColumnName="DateAdded" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="OriginalFileName" isEdited="false" isPrimaryKey="false" databaseColumnName="OriginalFileName" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="500" isIdentity="false" isUnique="false" />
+        <modelField name="Token" isEdited="false" isPrimaryKey="false" databaseColumnName="Token" nullable="false" type="Guid" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="16" isIdentity="false" isUnique="false" />
+        <modelField name="Url" isEdited="false" isPrimaryKey="false" databaseColumnName="Url" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="500" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Projects" isEdited="false" multiplicity="ZeroMany" association="ProjectAttachmentMap" type="ICollection&lt;Project&gt;" isForeignkey="false" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Attachment_Tenant_Tenant_Attachments" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Bid" tableName="Bid" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CompanyId" isEdited="false" isPrimaryKey="false" databaseColumnName="Company" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="DateCreated" isEdited="false" isPrimaryKey="false" databaseColumnName="DateCreated" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="HoursOfEffort" isEdited="false" isPrimaryKey="false" databaseColumnName="HoursOfEffort" nullable="false" type="Int32" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="4" isIdentity="false" isUnique="false" />
+        <modelField name="Invited" isEdited="false" isPrimaryKey="false" databaseColumnName="Invited" nullable="false" type="Boolean" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="1" isIdentity="false" isUnique="false" />
+        <modelField name="MaxQuote" isEdited="false" isPrimaryKey="false" databaseColumnName="MaxQuote" nullable="true" type="Int32" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="4" isIdentity="false" isUnique="false" />
+        <modelField name="Message" isEdited="false" isPrimaryKey="false" databaseColumnName="Message" nullable="true" isDbGenerated="false" isFixedLength="false" maxLength="0" isIdentity="false" isUnique="false" updateCheck="Never" />
+        <modelField name="MinQuote" isEdited="false" isPrimaryKey="false" databaseColumnName="MinQuote" nullable="true" type="Int32" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="4" isIdentity="false" isUnique="false" />
+        <modelField name="ProjectId" isEdited="false" isPrimaryKey="false" databaseColumnName="Project" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Status" isEdited="false" isPrimaryKey="false" databaseColumnName="Status" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Timeframe" isEdited="false" isPrimaryKey="false" databaseColumnName="Timeframe" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_Bid_Company_Company_Bids" type="Company" isForeignkey="true" foreignkeyColumn="Company" />
+        <navigationProperty name="Project" isEdited="false" multiplicity="One" association="FK_Bid_Project_Project_Bids" type="Project" isForeignkey="true" foreignkeyColumn="Project" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Bid_Tenant_Tenant_Bids" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Company" tableName="Company" derivesOrImplements="EntityBase">
+      <targets>
+        <association Id="822a90d5-b503-47d6-a111-4a9acc8f97eb" end1RoleName="Company" end2RoleName="ProjectInvite" end1NavigationProperty="ProjectInvites" end2NavigationProperty="Company" name="FK_ProjectInvite_Company_Company_ProjectInvites" isEdited="false">
+          <modelClassMoniker name="//ProjectInvite" />
+        </association>
+        <association Id="b677e7e6-146b-443b-9584-b29e97f0da23" end1RoleName="Company" end2RoleName="Consultant" end1NavigationProperty="Consultants" end2NavigationProperty="Company" name="FK_Consultant_Company_Company_Consultants" isEdited="false">
+          <modelClassMoniker name="//Consultant" />
+        </association>
+        <association Id="f254f89d-bf22-4dfa-8d40-6871fc21e2c8" end1RoleName="Company" end2RoleName="ProfileFeedback" end1NavigationProperty="FeedbackGiven" end2NavigationProperty="Company" name="FK_ProfileFeedback_Company_Company_FeedbackGiven" isEdited="false">
+          <modelClassMoniker name="//ProfileFeedback" />
+        </association>
+        <association Id="1ffd399e-4edf-4c8b-9811-570b43be1006" end1RoleName="Company" end2RoleName="EmployerFeedback" end1NavigationProperty="FeedbackReceived" end2NavigationProperty="Company" name="FK_EmployerFeedback_Company_Company_FeedbackReceived" isEdited="false">
+          <modelClassMoniker name="//EmployerFeedback" />
+        </association>
+        <association Id="ab1c8666-f983-46f0-846c-79b3ffb15645" end1RoleName="Company" end2RoleName="Bid" end1NavigationProperty="Bids" end2NavigationProperty="Company" name="FK_Bid_Company_Company_Bids" isEdited="false">
+          <modelClassMoniker name="//Bid" />
+        </association>
+        <association Id="16989c02-8618-4931-956c-7a2a2db7df0e" end1RoleName="Company" end2RoleName="PortfolioEntry" end1NavigationProperty="Portfolio" end2NavigationProperty="Company" name="FK_PortfolioEntry_Company_Company_Portfolio" isEdited="false">
+          <modelClassMoniker name="//PortfolioEntry" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="AccountId" isEdited="false" isPrimaryKey="false" databaseColumnName="Account" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="City" isEdited="false" isPrimaryKey="false" databaseColumnName="City" nullable="true" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Country" isEdited="false" isPrimaryKey="false" databaseColumnName="Country" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="100" isIdentity="false" isUnique="false" />
+        <modelField name="Currency" isEdited="false" isPrimaryKey="false" databaseColumnName="Currency" nullable="true" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Description" isEdited="false" isPrimaryKey="false" databaseColumnName="Description" nullable="true" isDbGenerated="false" isFixedLength="false" maxLength="0" isIdentity="false" isUnique="false" updateCheck="Never" />
+        <modelField name="IsVerified" isEdited="false" isPrimaryKey="false" databaseColumnName="IsVerified" nullable="false" type="Boolean" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="1" isIdentity="false" isUnique="false" />
+        <modelField name="Logo" isEdited="false" isPrimaryKey="false" databaseColumnName="Logo" nullable="true" isDbGenerated="false" isFixedLength="false" maxLength="250" isIdentity="false" isUnique="false" />
+        <modelField name="MinimumRate" isEdited="false" isPrimaryKey="false" databaseColumnName="MinimumRate" nullable="true" type="Int32" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="4" isIdentity="false" isUnique="false" />
+        <modelField name="Name" isEdited="false" isPrimaryKey="false" databaseColumnName="Name" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="200" isIdentity="false" isUnique="false" />
+        <modelField name="Style" isEdited="false" isPrimaryKey="false" databaseColumnName="Style" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Type" isEdited="false" isPrimaryKey="false" databaseColumnName="Type" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Website" isEdited="false" isPrimaryKey="false" databaseColumnName="Website" nullable="true" isDbGenerated="false" isFixedLength="false" maxLength="200" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Tags" isEdited="false" multiplicity="ZeroMany" association="TagCompanyMap" type="ICollection&lt;Tag&gt;" isForeignkey="false" />
+        <navigationProperty name="ProjectInvites" isEdited="false" multiplicity="ZeroMany" association="FK_ProjectInvite_Company_Company_ProjectInvites" type="ICollection&lt;ProjectInvite&gt;" isForeignkey="false" />
+        <navigationProperty name="Consultants" isEdited="false" multiplicity="ZeroMany" association="FK_Consultant_Company_Company_Consultants" type="ICollection&lt;Consultant&gt;" isForeignkey="false" />
+        <navigationProperty name="FeedbackGiven" isEdited="false" multiplicity="ZeroMany" association="FK_ProfileFeedback_Company_Company_FeedbackGiven" type="ICollection&lt;ProfileFeedback&gt;" isForeignkey="false" />
+        <navigationProperty name="FeedbackReceived" isEdited="false" multiplicity="ZeroMany" association="FK_EmployerFeedback_Company_Company_FeedbackReceived" type="ICollection&lt;EmployerFeedback&gt;" isForeignkey="false" />
+        <navigationProperty name="Bids" isEdited="false" multiplicity="ZeroMany" association="FK_Bid_Company_Company_Bids" type="ICollection&lt;Bid&gt;" isForeignkey="false" />
+        <navigationProperty name="Portfolio" isEdited="false" multiplicity="ZeroMany" association="FK_PortfolioEntry_Company_Company_Portfolio" type="ICollection&lt;PortfolioEntry&gt;" isForeignkey="false" />
+        <navigationProperty name="Account" isEdited="false" multiplicity="One" association="FK_Company_Account_Account_Company_OneToOne" type="Account" isForeignkey="true" foreignkeyColumn="Account" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Company_Tenant_Tenant_Companies" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Consultant" tableName="Consultant" derivesOrImplements="EntityBase">
+      <targets>
+        <association Id="bcf31cac-1b95-4c36-a71a-8848cf5deef6" end1RoleName="Consultant" end2RoleName="Credential" end1NavigationProperty="Credentials" end2NavigationProperty="Consultant" name="FK_Credential_Consultant_Consultant_Credentials" isEdited="false">
+          <modelClassMoniker name="//Credential" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CompanyId" isEdited="false" isPrimaryKey="false" databaseColumnName="Company" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Designation" isEdited="false" isPrimaryKey="false" databaseColumnName="Designation" nullable="true" isDbGenerated="false" isFixedLength="false" maxLength="100" isIdentity="false" isUnique="false" />
+        <modelField name="LinkedinProfile" isEdited="false" isPrimaryKey="false" databaseColumnName="LinkedinProfile" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="500" isIdentity="false" isUnique="false" />
+        <modelField name="Name" isEdited="false" isPrimaryKey="false" databaseColumnName="Name" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Picture" isEdited="false" isPrimaryKey="false" databaseColumnName="Picture" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="250" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_Consultant_Company_Company_Consultants" type="Company" isForeignkey="true" foreignkeyColumn="Company" />
+        <navigationProperty name="Credentials" isEdited="false" multiplicity="ZeroMany" association="FK_Credential_Consultant_Consultant_Credentials" type="ICollection&lt;Credential&gt;" isForeignkey="false" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Consultant_Tenant_Tenant_Consultants" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Credential" tableName="Credential" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="ConsultantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Consultant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Link" isEdited="false" isPrimaryKey="false" databaseColumnName="Link" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="500" isIdentity="false" isUnique="false" />
+        <modelField name="Type" isEdited="false" isPrimaryKey="false" databaseColumnName="Type" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Consultant" isEdited="false" multiplicity="One" association="FK_Credential_Consultant_Consultant_Credentials" type="Consultant" isForeignkey="true" foreignkeyColumn="Consultant" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Credential_Tenant_Tenant_Credentials" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Employer" tableName="Employer" derivesOrImplements="EntityBase">
+      <targets>
+        <association Id="ef83ac48-03fb-4cb1-8816-7a8d12346273" end1RoleName="Employer" end2RoleName="Project" end1NavigationProperty="Projects" end2NavigationProperty="Employer" name="FK_Project_Employer_Employer_Projects" isEdited="false">
+          <modelClassMoniker name="//Project" />
+        </association>
+        <association Id="f24a6ca9-71de-4837-a0ba-d555ab87720f" end1RoleName="Employer" end2RoleName="EmployerFeedback" end1NavigationProperty="FeedbackGiven" end2NavigationProperty="Employer" name="FK_EmployerFeedback_Employer_Employer_FeedbackGiven" isEdited="false">
+          <modelClassMoniker name="//EmployerFeedback" />
+        </association>
+        <association Id="0bebd7ca-6da9-4326-9e67-d34dcd060d94" end1RoleName="Employer" end2RoleName="ProfileFeedback" end1NavigationProperty="FeedbackReceived" end2NavigationProperty="Employer" name="FK_ProfileFeedback_Employer_Employer_FeedbackReceived" isEdited="false">
+          <modelClassMoniker name="//ProfileFeedback" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="AccountId" isEdited="false" isPrimaryKey="false" databaseColumnName="Account" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="City" isEdited="false" isPrimaryKey="false" databaseColumnName="City" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Country" isEdited="false" isPrimaryKey="false" databaseColumnName="Country" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="100" isIdentity="false" isUnique="false" />
+        <modelField name="IsVerified" isEdited="false" isPrimaryKey="false" databaseColumnName="IsVerified" nullable="false" type="Boolean" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="1" isIdentity="false" isUnique="false" />
+        <modelField name="Name" isEdited="false" isPrimaryKey="false" databaseColumnName="Name" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Picture" isEdited="false" isPrimaryKey="false" databaseColumnName="Picture" nullable="true" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Projects" isEdited="false" multiplicity="ZeroMany" association="FK_Project_Employer_Employer_Projects" type="ICollection&lt;Project&gt;" isForeignkey="false" />
+        <navigationProperty name="FeedbackGiven" isEdited="false" multiplicity="ZeroMany" association="FK_EmployerFeedback_Employer_Employer_FeedbackGiven" type="ICollection&lt;EmployerFeedback&gt;" isForeignkey="false" />
+        <navigationProperty name="FeedbackReceived" isEdited="false" multiplicity="ZeroMany" association="FK_ProfileFeedback_Employer_Employer_FeedbackReceived" type="ICollection&lt;ProfileFeedback&gt;" isForeignkey="false" />
+        <navigationProperty name="Account" isEdited="false" multiplicity="One" association="FK_Employer_Account_Account_Employer_OneToOne" type="Account" isForeignkey="true" foreignkeyColumn="Account" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Employer_Tenant_Tenant_Employers" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="EmployerFeedback" tableName="EmployerFeedback" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CompanyId" isEdited="false" isPrimaryKey="false" databaseColumnName="Company" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="EmployerId" isEdited="false" isPrimaryKey="false" databaseColumnName="Employer" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="ProjectId" isEdited="false" isPrimaryKey="false" databaseColumnName="Project" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Rating" isEdited="false" isPrimaryKey="false" databaseColumnName="Rating" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Text" isEdited="false" isPrimaryKey="false" databaseColumnName="Text" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_EmployerFeedback_Company_Company_FeedbackReceived" type="Company" isForeignkey="true" foreignkeyColumn="Company" />
+        <navigationProperty name="Employer" isEdited="false" multiplicity="One" association="FK_EmployerFeedback_Employer_Employer_FeedbackGiven" type="Employer" isForeignkey="true" foreignkeyColumn="Employer" />
+        <navigationProperty name="Project" isEdited="false" multiplicity="One" association="FK_EmployerFeedback_Project_Project_EmployerFeedback_OneToOne" type="Project" isForeignkey="true" foreignkeyColumn="Project" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_EmployerFeedback_Tenant_Tenant_EmployerFeedbacks" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="PortfolioEntry" tableName="PortfolioEntry" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CompanyId" isEdited="false" isPrimaryKey="false" databaseColumnName="Company" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Content" isEdited="false" isPrimaryKey="false" databaseColumnName="Content" nullable="true" isDbGenerated="false" isFixedLength="false" maxLength="0" isIdentity="false" isUnique="false" updateCheck="Never" />
+        <modelField name="Description" isEdited="false" isPrimaryKey="false" databaseColumnName="Description" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="0" isIdentity="false" isUnique="false" updateCheck="Never" />
+        <modelField name="Image" isEdited="false" isPrimaryKey="false" databaseColumnName="Image" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="500" isIdentity="false" isUnique="false" />
+        <modelField name="ProjectId" isEdited="false" isPrimaryKey="false" databaseColumnName="Project" nullable="true" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Title" isEdited="false" isPrimaryKey="false" databaseColumnName="Title" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Type" isEdited="false" isPrimaryKey="false" databaseColumnName="Type" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_PortfolioEntry_Company_Company_Portfolio" type="Company" isForeignkey="true" foreignkeyColumn="Company" />
+        <navigationProperty name="Project" isEdited="false" multiplicity="ZeroOne" association="FK_PortfolioEntry_Project_Project_PortfolioEntry_ZeroOneToZeroOne" type="Project" isForeignkey="true" foreignkeyColumn="Project" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_PortfolioEntry_Tenant_Tenant_PortfolioEntries" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="ProfileFeedback" tableName="ProfileFeedback" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CompanyId" isEdited="false" isPrimaryKey="false" databaseColumnName="Company" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="EmployerId" isEdited="false" isPrimaryKey="false" databaseColumnName="Employer" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="ProjectId" isEdited="false" isPrimaryKey="false" databaseColumnName="Project" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Rating" isEdited="false" isPrimaryKey="false" databaseColumnName="Rating" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Text" isEdited="false" isPrimaryKey="false" databaseColumnName="Text" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_ProfileFeedback_Company_Company_FeedbackGiven" type="Company" isForeignkey="true" foreignkeyColumn="Company" />
+        <navigationProperty name="Employer" isEdited="false" multiplicity="One" association="FK_ProfileFeedback_Employer_Employer_FeedbackReceived" type="Employer" isForeignkey="true" foreignkeyColumn="Employer" />
+        <navigationProperty name="Project" isEdited="false" multiplicity="One" association="FK_ProfileFeedback_Project_Project_ProfileFeedback_OneToOne" type="Project" isForeignkey="true" foreignkeyColumn="Project" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Project" tableName="Project" derivesOrImplements="EntityBase">
+      <targets>
+        <association Id="71b786b7-cadb-4891-a30c-a0d085d48fee" end1Multiplicity="ZeroMany" end1RoleName="Project" end2RoleName="Attachment" end1NavigationProperty="Attachments" end2NavigationProperty="Projects" name="ProjectAttachmentMap" manyToManyMappingTable="ProjectAttachmentMap" end1ManyToManyMappingColumn="Attachment" end2ManyToManyMappingColumn="Project" isEdited="false" end1ManyToManyNavigationProperty="Attachment" end2ManyToManyNavigationProperty="Project" end1ManyToManyFieldName="AttachmentId" end2ManyToManyFieldName="ProjectId">
+          <modelClassMoniker name="//Attachment" />
+        </association>
+        <association Id="78403211-ac8d-4e3f-9b69-fdaeed76d035" end1RoleName="Project" end2Multiplicity="One" end2RoleName="EmployerFeedback" end1NavigationProperty="EmployerFeedback" end2NavigationProperty="Project" name="FK_EmployerFeedback_Project_Project_EmployerFeedback_OneToOne" isEdited="false">
+          <modelClassMoniker name="//EmployerFeedback" />
+        </association>
+        <association Id="6d300c3d-0b7f-4cce-b52d-351fa3ca0f81" end1RoleName="Project" end2Multiplicity="One" end2RoleName="ProfileFeedback" end1NavigationProperty="ProfileFeedback" end2NavigationProperty="Project" name="FK_ProfileFeedback_Project_Project_ProfileFeedback_OneToOne" isEdited="false">
+          <modelClassMoniker name="//ProfileFeedback" />
+        </association>
+        <association Id="c911d640-9619-4845-aca7-72104200f0d4" end1RoleName="Project" end2RoleName="ProjectInvite" end1NavigationProperty="ProjectInvites" end2NavigationProperty="Project" name="FK_ProjectInvite_Project_Project_ProjectInvites" isEdited="false">
+          <modelClassMoniker name="//ProjectInvite" />
+        </association>
+        <association Id="524378d3-e860-44ce-b217-c6a42ff976ec" end1RoleName="Project" end2RoleName="Bid" end1NavigationProperty="Bids" end2NavigationProperty="Project" name="FK_Bid_Project_Project_Bids" isEdited="false">
+          <modelClassMoniker name="//Bid" />
+        </association>
+        <association Id="8be8b75d-5010-4e2c-bcef-d5caa157fdea" end1Multiplicity="ZeroOne" end1RoleName="Project" end2Multiplicity="ZeroOne" end2RoleName="PortfolioEntry" end1NavigationProperty="PortfolioEntry" end2NavigationProperty="Project" name="FK_PortfolioEntry_Project_Project_PortfolioEntry_ZeroOneToZeroOne" isEdited="false">
+          <modelClassMoniker name="//PortfolioEntry" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="Budget" isEdited="false" isPrimaryKey="false" databaseColumnName="Budget" nullable="false" type="Int32" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="4" isIdentity="false" isUnique="false" />
+        <modelField name="ClosingDate" isEdited="false" isPrimaryKey="false" databaseColumnName="ClosingDate" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Currency" isEdited="false" isPrimaryKey="false" databaseColumnName="Currency" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="DateAdded" isEdited="false" isPrimaryKey="false" databaseColumnName="DateAdded" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Description" isEdited="false" isPrimaryKey="false" databaseColumnName="Description" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="0" isIdentity="false" isUnique="false" updateCheck="Never" />
+        <modelField name="DescriptionText" isEdited="false" isPrimaryKey="false" databaseColumnName="DescriptionText" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="0" isIdentity="false" isUnique="false" updateCheck="Never" />
+        <modelField name="EmployerId" isEdited="false" isPrimaryKey="false" databaseColumnName="Employer" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Status" isEdited="false" isPrimaryKey="false" databaseColumnName="Status" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Title" isEdited="false" isPrimaryKey="false" databaseColumnName="Title" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="100" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Attachments" isEdited="false" multiplicity="ZeroMany" association="ProjectAttachmentMap" type="ICollection&lt;Attachment&gt;" isForeignkey="false" />
+        <navigationProperty name="Tags" isEdited="false" multiplicity="ZeroMany" association="ProjectTagMap" type="ICollection&lt;Tag&gt;" isForeignkey="false" />
+        <navigationProperty name="Employer" isEdited="false" multiplicity="One" association="FK_Project_Employer_Employer_Projects" type="Employer" isForeignkey="true" foreignkeyColumn="Employer" />
+        <navigationProperty name="EmployerFeedback" isEdited="false" multiplicity="One" association="FK_EmployerFeedback_Project_Project_EmployerFeedback_OneToOne" type="EmployerFeedback" isForeignkey="false" />
+        <navigationProperty name="ProfileFeedback" isEdited="false" multiplicity="One" association="FK_ProfileFeedback_Project_Project_ProfileFeedback_OneToOne" type="ProfileFeedback" isForeignkey="false" />
+        <navigationProperty name="ProjectInvites" isEdited="false" multiplicity="ZeroMany" association="FK_ProjectInvite_Project_Project_ProjectInvites" type="ICollection&lt;ProjectInvite&gt;" isForeignkey="false" />
+        <navigationProperty name="Bids" isEdited="false" multiplicity="ZeroMany" association="FK_Bid_Project_Project_Bids" type="ICollection&lt;Bid&gt;" isForeignkey="false" />
+        <navigationProperty name="PortfolioEntry" isEdited="false" multiplicity="ZeroOne" association="FK_PortfolioEntry_Project_Project_PortfolioEntry_ZeroOneToZeroOne" type="PortfolioEntry" isForeignkey="false" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Project_Tenant_Tenant_Projects" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="ProjectInvite" tableName="ProjectInvite" derivesOrImplements="EntityBase">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CompanyId" isEdited="false" isPrimaryKey="false" databaseColumnName="Company" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="ProjectId" isEdited="false" isPrimaryKey="false" databaseColumnName="Project" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Status" isEdited="false" isPrimaryKey="false" databaseColumnName="Status" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Company" isEdited="false" multiplicity="One" association="FK_ProjectInvite_Company_Company_ProjectInvites" type="Company" isForeignkey="true" foreignkeyColumn="Company" />
+        <navigationProperty name="Project" isEdited="false" multiplicity="One" association="FK_ProjectInvite_Project_Project_ProjectInvites" type="Project" isForeignkey="true" foreignkeyColumn="Project" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_ProjectInvite_Tenant_Tenant_ProjectInvites" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Tag" tableName="Tag" derivesOrImplements="EntityBase">
+      <targets>
+        <association Id="bb5ca0f2-e0bd-4029-951b-361f3464da3e" end1Multiplicity="ZeroMany" end1RoleName="Tag" end2RoleName="Project" end1NavigationProperty="Projects" end2NavigationProperty="Tags" name="ProjectTagMap" manyToManyMappingTable="ProjectTagMap" end1ManyToManyMappingColumn="Project" end2ManyToManyMappingColumn="Tag" isEdited="false" end1ManyToManyNavigationProperty="Project" end2ManyToManyNavigationProperty="Tag" end1ManyToManyFieldName="ProjectId" end2ManyToManyFieldName="TagId">
+          <modelClassMoniker name="//Project" />
+        </association>
+        <association Id="76f5d1e0-e0ae-45b0-8f9b-eb795579f357" end1Multiplicity="ZeroMany" end1RoleName="Tag" end2RoleName="Company" end1NavigationProperty="Companies" end2NavigationProperty="Tags" name="TagCompanyMap" manyToManyMappingTable="TagCompanyMap" end1ManyToManyMappingColumn="Company" end2ManyToManyMappingColumn="Tag" isEdited="false" end1ManyToManyNavigationProperty="Company" end2ManyToManyNavigationProperty="Tag" end1ManyToManyFieldName="CompanyId" end2ManyToManyFieldName="TagId">
+          <modelClassMoniker name="//Company" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="Name" isEdited="false" isPrimaryKey="false" databaseColumnName="Name" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Slug" isEdited="false" isPrimaryKey="false" databaseColumnName="Slug" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Projects" isEdited="false" multiplicity="ZeroMany" association="ProjectTagMap" type="ICollection&lt;Project&gt;" isForeignkey="false" />
+        <navigationProperty name="Companies" isEdited="false" multiplicity="ZeroMany" association="TagCompanyMap" type="ICollection&lt;Company&gt;" isForeignkey="false" />
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Tag_Tenant_Tenant_Tags" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Token" tableName="Token">
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="true" isUnique="false" />
+        <modelField name="CreatedDate" isEdited="false" isPrimaryKey="false" databaseColumnName="CreatedDate" nullable="false" type="DateTime" isDbGenerated="false" isFixedLength="false" isUnicode="false" maxLength="8" isIdentity="false" isUnique="false" />
+        <modelField name="Data" isEdited="false" isPrimaryKey="false" databaseColumnName="Data" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="1000" isIdentity="false" isUnique="false" />
+        <modelField name="Key" isEdited="false" isPrimaryKey="false" databaseColumnName="Key" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="Type" isEdited="false" isPrimaryKey="false" databaseColumnName="Type" nullable="false" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+        <modelField name="TenantId" isEdited="false" isPrimaryKey="false" databaseColumnName="Tenant" nullable="false" type="Int64" isDbGenerated="false" isFixedLength="false" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Tenant" isEdited="false" multiplicity="One" association="FK_Token_Tenant_Tenant_Tokens" type="Tenant" isForeignkey="true" foreignkeyColumn="Tenant" />
+      </navigationProperties>
+    </modelClass>
+    <modelClass name="Tenant" tableName="Tenant">
+      <targets>
+        <association Id="1d759195-6aed-4406-a24f-49386849eb27" end1RoleName="Tenant" end2RoleName="Account" end1NavigationProperty="Accounts" end2NavigationProperty="Tenant" name="FK_Account_Tenant_Tenant_Accounts" isEdited="false">
+          <modelClassMoniker name="//Account" />
+        </association>
+        <association Id="13027fce-ba02-4eb4-b35a-e10466c0f01d" end1RoleName="Tenant" end2RoleName="AccountAlert" end1NavigationProperty="AccountAlerts" end2NavigationProperty="Tenant" name="FK_AccountAlert_Tenant_Tenant_AccountAlerts" isEdited="false">
+          <modelClassMoniker name="//AccountAlert" />
+        </association>
+        <association Id="f34a212c-8e03-470f-8260-7d2e41e1772a" end1RoleName="Tenant" end2RoleName="Attachment" end1NavigationProperty="Attachments" end2NavigationProperty="Tenant" name="FK_Attachment_Tenant_Tenant_Attachments" isEdited="false">
+          <modelClassMoniker name="//Attachment" />
+        </association>
+        <association Id="26c890d0-50e3-44eb-a275-93e32a5f1ff4" end1RoleName="Tenant" end2RoleName="Bid" end1NavigationProperty="Bids" end2NavigationProperty="Tenant" name="FK_Bid_Tenant_Tenant_Bids" isEdited="false">
+          <modelClassMoniker name="//Bid" />
+        </association>
+        <association Id="3f75f64e-767b-4ab0-ae08-eac7de8404f8" end1RoleName="Tenant" end2RoleName="Company" end1NavigationProperty="Companies" end2NavigationProperty="Tenant" name="FK_Company_Tenant_Tenant_Companies" isEdited="false">
+          <modelClassMoniker name="//Company" />
+        </association>
+        <association Id="9e0a032f-b5e1-40dd-967e-b78bd5c003a1" end1RoleName="Tenant" end2RoleName="Consultant" end1NavigationProperty="Consultants" end2NavigationProperty="Tenant" name="FK_Consultant_Tenant_Tenant_Consultants" isEdited="false">
+          <modelClassMoniker name="//Consultant" />
+        </association>
+        <association Id="24471313-fae5-493b-a964-7593ac7f329c" end1RoleName="Tenant" end2RoleName="Credential" end1NavigationProperty="Credentials" end2NavigationProperty="Tenant" name="FK_Credential_Tenant_Tenant_Credentials" isEdited="false">
+          <modelClassMoniker name="//Credential" />
+        </association>
+        <association Id="6fc20aef-7375-4863-b882-94607241dae1" end1RoleName="Tenant" end2RoleName="Employer" end1NavigationProperty="Employers" end2NavigationProperty="Tenant" name="FK_Employer_Tenant_Tenant_Employers" isEdited="false">
+          <modelClassMoniker name="//Employer" />
+        </association>
+        <association Id="102e5772-a487-4849-8625-34a2eca54d1b" end1RoleName="Tenant" end2RoleName="EmployerFeedback" end1NavigationProperty="EmployerFeedbacks" end2NavigationProperty="Tenant" name="FK_EmployerFeedback_Tenant_Tenant_EmployerFeedbacks" isEdited="false">
+          <modelClassMoniker name="//EmployerFeedback" />
+        </association>
+        <association Id="53a8dbde-ea0b-4dd7-bd90-0cfc711c1668" end1RoleName="Tenant" end2RoleName="PortfolioEntry" end1NavigationProperty="PortfolioEntries" end2NavigationProperty="Tenant" name="FK_PortfolioEntry_Tenant_Tenant_PortfolioEntries" isEdited="false">
+          <modelClassMoniker name="//PortfolioEntry" />
+        </association>
+        <association Id="4ee5f105-df35-4031-9dd7-cf684e69a830" end1RoleName="Tenant" end2RoleName="Project" end1NavigationProperty="Projects" end2NavigationProperty="Tenant" name="FK_Project_Tenant_Tenant_Projects" isEdited="false">
+          <modelClassMoniker name="//Project" />
+        </association>
+        <association Id="f5a396a1-2a09-48e8-bd34-d57829520039" end1RoleName="Tenant" end2RoleName="ProjectInvite" end1NavigationProperty="ProjectInvites" end2NavigationProperty="Tenant" name="FK_ProjectInvite_Tenant_Tenant_ProjectInvites" isEdited="false">
+          <modelClassMoniker name="//ProjectInvite" />
+        </association>
+        <association Id="8051978b-e635-4d3e-af97-a15538910520" end1RoleName="Tenant" end2RoleName="Tag" end1NavigationProperty="Tags" end2NavigationProperty="Tenant" name="FK_Tag_Tenant_Tenant_Tags" isEdited="false">
+          <modelClassMoniker name="//Tag" />
+        </association>
+        <association Id="a2c3251d-59d5-464c-995c-0619898eb19e" end1RoleName="Tenant" end2RoleName="Token" end1NavigationProperty="Tokens" end2NavigationProperty="Tenant" name="FK_Token_Tenant_Tenant_Tokens" isEdited="false">
+          <modelClassMoniker name="//Token" />
+        </association>
+      </targets>
+      <fields>
+        <modelField name="Id" isEdited="false" isPrimaryKey="true" databaseColumnName="Id" nullable="false" type="Int64" isDbGenerated="true" isFixedLength="false" isIdentity="true" isUnique="false" />
+        <modelField name="Name" isEdited="true" isPrimaryKey="false" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="255" isIdentity="false" isUnique="false" />
+        <modelField name="DomainName" isEdited="true" isPrimaryKey="false" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="255" isIdentity="false" isUnique="false" />
+        <modelField name="ViewStore" isEdited="true" isPrimaryKey="false" nullable="false" isDbGenerated="false" isFixedLength="false" maxLength="255" isIdentity="false" isUnique="false" />
+      </fields>
+      <navigationProperties>
+        <navigationProperty name="Accounts" isEdited="false" multiplicity="ZeroMany" association="FK_Account_Tenant_Tenant_Accounts" type="ICollection&lt;Account&gt;" isForeignkey="false" />
+        <navigationProperty name="AccountAlerts" isEdited="false" multiplicity="ZeroMany" association="FK_AccountAlert_Tenant_Tenant_AccountAlerts" type="ICollection&lt;AccountAlert&gt;" isForeignkey="false" />
+        <navigationProperty name="Attachments" isEdited="false" multiplicity="ZeroMany" association="FK_Attachment_Tenant_Tenant_Attachments" type="ICollection&lt;Attachment&gt;" isForeignkey="false" />
+        <navigationProperty name="Bids" isEdited="false" multiplicity="ZeroMany" association="FK_Bid_Tenant_Tenant_Bids" type="ICollection&lt;Bid&gt;" isForeignkey="false" />
+        <navigationProperty name="Companies" isEdited="false" multiplicity="ZeroMany" association="FK_Company_Tenant_Tenant_Companies" type="ICollection&lt;Company&gt;" isForeignkey="false" />
+        <navigationProperty name="Consultants" isEdited="false" multiplicity="ZeroMany" association="FK_Consultant_Tenant_Tenant_Consultants" type="ICollection&lt;Consultant&gt;" isForeignkey="false" />
+        <navigationProperty name="Credentials" isEdited="false" multiplicity="ZeroMany" association="FK_Credential_Tenant_Tenant_Credentials" type="ICollection&lt;Credential&gt;" isForeignkey="false" />
+        <navigationProperty name="Employers" isEdited="false" multiplicity="ZeroMany" association="FK_Employer_Tenant_Tenant_Employers" type="ICollection&lt;Employer&gt;" isForeignkey="false" />
+        <navigationProperty name="EmployerFeedbacks" isEdited="false" multiplicity="ZeroMany" association="FK_EmployerFeedback_Tenant_Tenant_EmployerFeedbacks" type="ICollection&lt;EmployerFeedback&gt;" isForeignkey="false" />
+        <navigationProperty name="PortfolioEntries" isEdited="false" multiplicity="ZeroMany" association="FK_PortfolioEntry_Tenant_Tenant_PortfolioEntries" type="ICollection&lt;PortfolioEntry&gt;" isForeignkey="false" />
+        <navigationProperty name="Projects" isEdited="false" multiplicity="ZeroMany" association="FK_Project_Tenant_Tenant_Projects" type="ICollection&lt;Project&gt;" isForeignkey="false" />
+        <navigationProperty name="ProjectInvites" isEdited="false" multiplicity="ZeroMany" association="FK_ProjectInvite_Tenant_Tenant_ProjectInvites" type="ICollection&lt;ProjectInvite&gt;" isForeignkey="false" />
+        <navigationProperty name="Tags" isEdited="false" multiplicity="ZeroMany" association="FK_Tag_Tenant_Tenant_Tags" type="ICollection&lt;Tag&gt;" isForeignkey="false" />
+        <navigationProperty name="Tokens" isEdited="false" multiplicity="ZeroMany" association="FK_Token_Tenant_Tenant_Tokens" type="ICollection&lt;Token&gt;" isForeignkey="false" />
+      </navigationProperties>
+    </modelClass>
+  </types>
+</modelRoot>

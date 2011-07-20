@@ -1,0 +1,11 @@
+﻿hi {0},
+
+Your Bid {1} for Project {2} http://canyoucode.com/Projects/{3} has been accepted.
+
+To get more information about the project, you can reach the customer directly using the following contact information 
+
+Email: {4}
+Phone: {5}
+
+Thank you,
+Team Canyoucode.

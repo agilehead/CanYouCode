@@ -1,0 +1,8 @@
+﻿hello {0},
+
+You have received a new bid for the Project {1} http://canyoucode.com/Projects/{2}, from {3}, Profile - http://canyoucode.com/{4}
+
+To View the Bid use this link - http://canyoucode.com/Projects/{2}
+
+Thank you,
+Team Canyoucode.

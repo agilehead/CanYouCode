@@ -1,0 +1,10 @@
+﻿a, a:visited, a:focus { color: #06c }
+a img { border: 0 none }
+a:focus { outline: none; }
+
+body { font-family: Lucida Sans, Helvetica, Arial; font-size: 13px; }
+
+ol li { list-style-type:decimal }
+ul li { list-style-type:disc }
+
+p { line-height: 1.3em; }

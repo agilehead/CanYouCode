@@ -1,0 +1,286 @@
+﻿* { margin:0; padding:0; }
+
+a, a:visited, a:focus { color: #06c }
+a img { border: 0 none }
+a:focus { outline: none; }
+
+body { background: url(/images/body-bg.jpg) ; font-family: Lucida Sans, Helvetica, Arial; 
+       font-size: 13px; padding-bottom: 32px; /* for footer */  }
+
+h1 { font-size: 20px; margin-bottom: 8px; }
+h2 { font-size: 16px }
+h3 { font-size: 14px }
+
+li { list-style: none }
+
+p { line-height: 1.3em; }
+
+th, td { text-align: left }
+th { background-color: #eee; padding: 6px; border-bottom: 2px dotted #ccc }
+td { padding: 4px 12px 4px 6px; border-bottom: 1px solid #eee }
+
+.fixedSideMenu { position:fixed; top: 240px; left: 0 }
+.likeLink { color: #06c; text-decoration: underline }
+.clear { height:0; clear: both }
+.float { float: left }
+.dim { color: Gray }
+.subText { color: Gray; font-size: 11px }
+.lineItem { display:block; clear:both }
+.likeButton { cursor:pointer; }
+.standout { border-width: 4px; }
+.linkLike { text-decoration:underline; cursor:pointer; }
+.tiny { font-size: 11px; }
+.frame { width: 960px; margin:auto; }    
+
+.bannerPane { float:left; margin-left: 20px; }
+    .bannerPane p { padding-bottom: 8px }
+    
+/* Pure text content pages - with lots to read */
+.textual p { padding: 6px 0 6px 0; text-align: justify }
+
+/* Reset jQuery UI styles */
+.ui-widget-content a { color: #06c }    
+
+/* Basically meant for the link next to a button, for unlikely action. Like 'cancel'ing a form submit */
+.buttonBar { clear: both; }
+    .buttonBar .button { display: block; float: left; }
+    .buttonBar .link { display: block; float: left; font-size: 11px; padding: 6px 0 0 8px }
+
+.header { height: 120px; } 
+    .header .logo { float: left; padding-right: 32px }
+    /* .header ul { float: left; width: 524px; margin-top: 8px } */
+    .header ul { }
+        .header ul li { display:block; margin-top: 32px; margin-left: 12px; float:left; background: url(/images/header-menuitem-bg.png) repeat-x }
+        .header ul li.selected { background: url(/images/header-menuitem-selected-bg.png) repeat-x }
+    .logoutLink { float:right; margin-top: -114px; padding: 6px; background-color: #ddd; }
+        
+.header.minimal { text-align:center; }
+    .header.minimal a.logo { margin:auto; padding:0; float: none; display: block; }
+
+.footer { clear:both; text-align:center; bottom:0; left:0; width:100%; padding-top: 28px; 
+          font-size: 12px; height:24px;   /* Height of the footer */ 
+          color: #666; }
+    .footer a { color: #333; }
+
+.location { display:block; font-size: 11px; color: Green; text-transform: uppercase }
+
+a.smallLink { font-size: 11px; margin-right: 6px }
+.green { color: #060 }
+.red { color: #600 }
+
+.content { min-height:100%; position:relative; padding: 24px; background: #fff; }
+    .frame.minimal .content { background: none }
+    
+    .content .narrowLeft { width:318px; margin-left: 10px; float: left }
+    .content .wideRight { margin-left:20px; width: 580px; float: left }
+
+#messageList, #errorList { padding: 6px; background: #fC0; width: 500px; margin: 0 auto 12px auto; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+    #messageList li, #errorList li { padding: 4px; font-size: 12px; font-weight: bold }
+
+.form { border: 1px solid #ddd; background-color: #f6f6f6; }
+    .form h1, .form h2, .form h3 { color: Maroon }
+    .form h1 { font-size: 24px; margin-bottom: 4px; }
+        .form.standard.packed h1 { font-size: 16px; }
+    .form .radioButtons span { margin-right: 20px }    
+    .form .section { margin-top: 4px; padding-top:16px; border-top: 1px solid #ccc; }
+    
+    .form.standard { font-size: 14px; padding: 16px 32px 16px 32px;  }
+        .form.standard.packed { font-size: 14px; padding: 12px 24px 12px 24px;  }
+    .form.standard input, .form.standard select { padding: 4px; }        
+    .form.standard label { display:block; float: left; width: 172px; padding-top: 4px; }
+        .form.standard.modal label { display:block; float: none; }
+    .form.standard .inputHint { padding-left: 172px; font-size: 11px; padding-top:3px; color: Gray }
+    .form.standard li { padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px dotted #ccc }
+        .form.standard.packed li { padding-bottom: 6px; margin-bottom: 6px; border: none }
+            .form.standard.packed.dense li { padding-bottom: 2px; margin-bottom: 2px; border: none }
+    .form.standard li p { margin-bottom: 4px; }        
+    
+    .form.standard.unruled li { padding-bottom: 6px; margin-bottom: 6px; border-bottom: none }
+    
+    .form.narrow { width:300px; margin: auto; }
+    .form.broad { width: 540px; }
+        .form.standard.broad label { width: 152px }
+    .form.wide { width:600px; }
+    .form.wider { width:720px; }
+        
+    .form input[type=submit] { min-width: 64px }    
+    
+    
+/* tab bar */
+ul.tab { height: 40px; margin: 0; padding: 1px 0 20px 20px; }
+    ul.tab.full { background: #fff url(/images/tab-full.png) no-repeat; width: 892px }
+    ul.tab li { float: left; display: block; margin:0; padding:15px 12px 0 12px; height: 24px; 
+                font-size: 14px; text-align: center; font-weight: bold } 
+    ul.tab li.selected { width: 76px; background: url(/images/tab-selected.png) no-repeat; color: #f30; }
+    ul.tab li a { color: Gray }
+    ul.tab li.selected a { color: #f30 }
+    
+/* generic */
+.skill { display: block; float: left; background-color: #d1e9ad; margin: 4px 8px 4px 0; padding: 3px; font-size: 11px;
+    -moz-border-radius: 3px; -webkit-border-radius: 3px; text-decoration: none; color: #333 }
+.hourlyRate { font-weight: bold }    
+.mainCredential { font-size: 12px; }
+.credential { font-size: 11px }
+.actionBar { padding-top: 8px }
+    .actionBar h2 { font-size: 14px; }
+    
+/* Home page */
+.home.content { padding: 0px; background: none }
+.home.content .main { border: 1px solid #ccc; border-top: 1px solid #999; background: #fff; padding-bottom: 32px; }
+    .home.content .topPane { background: url(/images/texture2.jpg) }
+    
+    .home .main h2 { padding: 8px 12px 8px 12px; margin: 0 0 12px 0; font-size: 16px; border-bottom: 1px solid #ccc; background: #eee }
+    .home .topList { width:472px; float: left; margin:0; padding: 0;}
+        .home .topList h2 { margin-top: 4px; padding:16px 6px 10px 12px; font-weight:bold; font-size: 24px; }
+    
+        .home .topList.left { width: 476px; padding-left: 6px; }
+        .home .topList.right { width: 476px; }
+            .home .topList .companyDetails { width: 340px; }
+
+    .home .billboard { height: 412px; background: url(/images/home/billboard.png) no-repeat 32px 20px }
+        .home .billboard .verified { position:absolute; margin-left: 80px; top: 92px; }
+        .home .billboard .fairpay { position:absolute; margin-left: 562px; top: 184px; }
+
+    .home .topList li { clear:both; padding: 12px 20px 12px 6px; }
+
+/* Portfolio EDIT */
+.company.edit .pageType { padding: 6px; font-size: 12px }
+    
+/* Register page */
+.register #PortfolioURL { font-weight: bolder }
+
+/* Login page */
+.login .form { float:left; margin-left: 272px; }
+.login .rPane { float:left; margin-left: 32px }
+.login .rPane h2 { font-size:18px; margin:24px 0 4px 0; padding:0; }
+
+/* Display experts list */
+.companies { }
+    .results.companies {  margin: 0 0 20px 20px; padding: 0 0 0 12px; width: 576px; }
+.companies li { clear: both; padding: 12px 0 12px 0; }
+.companies .logo { width: 80px; margin-right:12px; float: left; text-align: center }
+.companies .companyDetails { float: left; width: 400px; }
+    .companies h3 { font-size: 14px; font-weight: normal; margin:0px 12px 3px 0; }        
+    .companies .location { margin-left: 50px }
+    .companies .description { padding: 3px }
+    .companies .message { font-size: 11px; padding: 4px 0 4px 0; }
+
+/* Projects - Used everywhere a list of projects are displayed */
+.project .addedOn { float: left; padding-right:12px; }
+.project .postedBy { float: left }
+    .project .postedBy a { font-size: 14px; color: Green }
+    .project .postedBy .location { display:block; margin-left: 60px; }
+    .project h3 { margin-bottom: 4px; }
+    .project .description { clear: both; padding: 8px 0 2px 0; width: 540px; text-align: justify; float: left; }
+    .project .skills { padding: 8px 0 0 6px; }
+    .project .attachments { padding: 8px; margin-top: 8px; background: #EFC } 
+    
+    .project .bidInfo { float: left; width: 160px; padding: 0px 0 4px 0; margin-top:32px; text-align: center; 
+                        text-transform:uppercase; margin-left: 20px; }
+        .project .bidInfo p { margin-top: 6px; color: Gray; }
+        .project .closingDate { display:block; font-size: 13px; color: Black }
+        .project .budget { display:block; padding:2px 0 2px 0; font-size: 22px; font-weight:bold; color: Maroon }
+        .project .yourBid { display:block; font-size: 17px; font-weight:bold; color: Green }
+        .project .winningBid { display:block; padding:2px 0 2px 0; font-size: 22px; font-weight:bold; color: Maroon }
+        .project .bidInfo.more { background: url(/images/bidInfo-more.png) no-repeat; min-height: 150px; }
+        .project .bidInfo.less { background: url(/images/bidInfo-less.png) no-repeat; min-height: 120px; }
+        .project .bidInfo .bidButton { padding-top: 12px; }
+    
+    .project .infoSnippets { width: 172px; float: left; margin-top:32px; padding-left: 12px; }
+        .project .infoSnippets p { color: Green; font-size: 11px; padding: 3px 0 3px 0; 
+                                   margin: 3px 0 3px 0; background-color: #efc }
+        
+    /* Iconic projects are simpler than full project view */
+    /* eg: My Projects pages */
+    .project.iconic h2 { padding: 0 0 4px 72px; font-size: 20px; font-weight: normal }
+    .project.iconic .description { width: 480px }
+    .project.iconic .addedOn { padding-left: 72px; }
+    .project.iconic .bidInfo { margin-top: 0 }
+    .project.iconic .infoSnippets { margin-top: 0; width: 224px; }
+    
+    /* simpleView projects contain even lesser info than iconic */
+    /* eg: The search results page. /Search/Work */
+    .project.simpleView h2 { padding-bottom: 4px; font-size: 18px; }
+    .project.simpleView .description { width: 420px }
+    .project.simpleView .bidInfo { margin-top: 0 }
+    
+    .project .detailsBar { clear: both; padding: 6px 0 0 0  }
+    
+/* A project list. Such as ol, ul */
+/* eg: The search results page, or my projects page */
+.projects .project { padding: 12px 0 12px 0; border-top: 1px solid #eee }     
+.projects .project:first-child { border-top: none }     
+.bids .project { background: #fff url(/images/bid.png) no-repeat; }
+    
+/* The invites block */
+ol.invites { padding: 6px 12px 6px 12px; margin-bottom: 16px; width: 640px; margin:auto;
+             -moz-border-radius: 3px; -webkit-border-radius: 3px; background: #f6f6f6; border: 1px solid #ccc; }     
+    ol.invites li { padding: 6px; }
+    ol.invites li .text { float: left }
+    ol.invites li a.cancel img { padding-left: 6px; float: left; }
+    
+/* Company Edit */
+.company.edit { padding: 16px 24px 24px 24px; }
+.company.edit h1 { font-size: 20px; padding-bottom: 8px; }
+.company.edit #People .left { float: left; width: 300px; }
+.company.edit #People .right { float: left; margin-left: 32px; width: 400px }
+.company.edit #People ul.list li { clear: both; padding-bottom: 16px; }
+.company.edit #People ul.list li img { float: left; margin-right: 12px; }   
+   .company.edit .otherCreds { padding: 4px; font-size: 11px; color: #333 } 
+   
+/* Search */
+.search { background-color: White; } 
+.form.standard.searchbar { width:240px; height: 240px; float: left; padding: 12px 0 0 20px; border:1px solid #eee }
+    .searchbar h1 { font-size: 16px; margin: -12px 0px 0px -20px; padding: 8px 0 8px 12px; background: Gray; color:White }
+    .searchbar p { padding-top: 12px; }
+    .searchbar input:not([type="submit"]), .searchbar select, .searchbar textarea { width: 220px; }
+.search .results { float: left; margin-left: 32px; }
+
+/* Employer */
+.employer h1 { font-size: 24px; font-weight:normal; color: #390; position: absolute; padding-left: 12px; }    
+    .employer.view h2 { clear: both; font-size:14px; padding: 12px 0 0 0; }
+.employer .location { position:absolute; padding:26px 0 8px 32px; }
+.employer .contact { padding-top: 50px; }
+.employer .fieldLabel, .employer .fieldValue { padding: 3px; display: block; float: left; }
+    .employer .fieldLabel { clear: both; min-width: 80px }
+.employer .projects { padding-top: 8px; clear: both; }
+    .employer .projects td { padding: 8px }
+    
+/* Admin */
+.content.admin .options li { float: left; width: 140px; height: 140px; padding: 20px; text-align:center; }
+
+/* Project display to reset properties */
+.reset ol, .reset ul { border-style: none; margin-bottom: 0px; padding:10px; margin:15px;}
+    .reset ol li { list-style-type:decimal;}
+    .reset ul li { list-style-type:disc;  }
+    
+/* Preview mode */
+.previewHeader { position:fixed; width: 100%; left:0;   z-index: 2000;
+                 text-align:right; background: url(/images/dark-overlay.png); height: 36px; padding-top: 8px; }  
+    .previewHeader p { float: left; padding: 4px 0 0 20px; font-weight: bold; color: White; }                  
+.previewHeaderSpace { height: 44px; }                 
+
+/* Company Signup */
+.companySignup .type { padding-bottom:4px; }
+
+/* Add this - Company Profile */
+.addthis_toolbox { float:right; }
+.addthis_toolbox .publish { float:left; padding-right:5px; color:Gray;}
+.addthis_toolbox.addthis_32x32_style span { line-height:24px; }
+
+/* Add this - Fixed Side Pane */
+.addthis_toolbox.atfixed { position: fixed; top: 40%; left: 0px; padding: 5px 5px 1px;
+    width: 32px; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
+.addthis_toolbox .custom_images a { width: 32px; height: 32px; margin: 0; padding: 0; cursor: pointer; }
+.addthis_toolbox .custom_images a img { border: 0; margin: 0 0 1px; opacity: 1.0; }
+.addthis_toolbox .custom_images a:hover img { margin: 1px 0 0; opacity: 0.75; }
+
+/* Portfolio Style Select */
+
+.portfolioStyleSelect { float:right; padding-right:40px; }
+.portfolioStyleSelect select { padding:4px; }
+.portfolioStyleSelect span { color:Gray;}
+
+/* Alerts */
+.alerts { background: #f6f6f6; }
+    .alerts a.close { display: block; float: right; }

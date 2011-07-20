@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ServiceConfiguration serviceName="canyoucode.CloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="canyoucode.Web">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" value="DefaultEndpointsProtocol=https;AccountName=canyoucode;AccountKey=Byb6800NBEdej0GBUTvc0rQ+mX1uAPgk6pIaZ5L9n9YXoSyHRv/xKTTq8zvzPnaQah9TDs0vlEByBmiFQOny+g==" />
+      <Setting name="PublicDataStore" value="DefaultEndpointsProtocol=https;AccountName=canyoucode;AccountKey=Byb6800NBEdej0GBUTvc0rQ+mX1uAPgk6pIaZ5L9n9YXoSyHRv/xKTTq8zvzPnaQah9TDs0vlEByBmiFQOny+g==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="administrator" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEBi3syhIn4SaSMGInk/qFDgwDQYJKoZIhvcNAQEBBQAEggEAjjnxMPMkmbc0UdZXiLf1SACIlaCnaI8bqhKw9SajXsKMwdmf3f4lwJd6fjvUbRmzCmpzoCyEIU+BSak/sW9fMqfiVPnpUHLmEKxewoVireY5jt3b3brTqPVXs3LApM4eb7Ne4dHKj4p4gnwqW7FoGzvOVjhwX77IsZehB68vrkCDb0sfWUGYEzOm0YJZyOIwoYapjUP5FmImJyB82muq2ebalihP/Pv0mEu7IAGJrS38GPlqVuuNR+fBKNjQJqXCwa4bCoFZWSYplpoRPMEnJnBOVbWL3YXt6JGru+Bc9Lh5cUgzS2NxcrNu6uL7Gb2BnHUok7apaY/YT8pGNmTfbjAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECBcN4vBwm2KvgBAYytkR3gqH/rz9WD+ZvJ9W" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2012-02-27T23:59:59.0000000+05:30" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="C3626AF8E43CE8667E83225794E284D67330D6C0" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

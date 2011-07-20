@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="CanYouCodeDb" Class="CanYouCodeDb_LinqToSqlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=.;Initial Catalog=CanYouCodeDb;Integrated Security=True;Connect Timeout=10;User Instance=False" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Account">
+    <Type Name="Account">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_AccountAlert_Account_Account_Alerts" Member="Alerts" Type="AccountAlert" ThisKey="Id" OtherKey="AccountId" />
+      <Association Name="FK_Employer_Account_Account_Employer_OneToOne" Member="Employer" Type="Employer" ThisKey="Id" OtherKey="AccountId" Cardinality="One" />
+      <Association Name="FK_Company_Account_Account_Company_OneToOne" Member="Company" Type="Company" ThisKey="Id" OtherKey="AccountId" Cardinality="One" />
+      <Association Name="FK_Account_Tenant_Tenant_Accounts" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountAlert" Member="AccountAlert">
+    <Type Name="AccountAlert">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Account" Type="System.Int64" DbType="BigInt" CanBeNull="true" Member="AccountId" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_AccountAlert_Account_Account_Alerts" Member="Account" Type="Account" ThisKey="AccountId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_AccountAlert_Tenant_Tenant_AccountAlerts" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attachment" Member="Attachment">
+    <Type Name="Attachment">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalFileName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="Attachment_ProjectAttachmentMap" Member="ProjectAttachmentMap" ThisKey="Id" OtherKey="Project" Type="ProjectAttachmentMap" />
+      <Association Name="FK_Attachment_Tenant_Tenant_Attachments" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bid" Member="Bid">
+    <Type Name="Bid">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="CompanyId" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoursOfEffort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Invited" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MaxQuote" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MinQuote" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="ProjectId" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Timeframe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_Bid_Company_Company_Bids" Member="Company" Type="Company" ThisKey="CompanyId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_Bid_Project_Project_Bids" Member="Project" Type="Project" ThisKey="ProjectId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_Bid_Tenant_Tenant_Bids" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Company" Member="Company">
+    <Type Name="Company">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Account" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="AccountId" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Currency" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsVerified" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MinimumRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Style" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="Company_TagCompanyMap" Member="TagCompanyMap" ThisKey="Id" OtherKey="Tag" Type="TagCompanyMap" />
+      <Association Name="FK_ProjectInvite_Company_Company_ProjectInvites" Member="ProjectInvites" Type="ProjectInvite" ThisKey="Id" OtherKey="CompanyId" />
+      <Association Name="FK_Consultant_Company_Company_Consultants" Member="Consultants" Type="Consultant" ThisKey="Id" OtherKey="CompanyId" />
+      <Association Name="FK_ProfileFeedback_Company_Company_FeedbackGiven" Member="FeedbackGiven" Type="ProfileFeedback" ThisKey="Id" OtherKey="CompanyId" />
+      <Association Name="FK_EmployerFeedback_Company_Company_FeedbackReceived" Member="FeedbackReceived" Type="EmployerFeedback" ThisKey="Id" OtherKey="CompanyId" />
+      <Association Name="FK_Bid_Company_Company_Bids" Member="Bids" Type="Bid" ThisKey="Id" OtherKey="CompanyId" />
+      <Association Name="FK_PortfolioEntry_Company_Company_Portfolio" Member="Portfolio" Type="PortfolioEntry" ThisKey="Id" OtherKey="CompanyId" />
+      <Association Name="FK_Company_Account_Account_Company_OneToOne" Member="Account" Type="Account" ThisKey="AccountId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_Company_Tenant_Tenant_Companies" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Consultant" Member="Consultant">
+    <Type Name="Consultant">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="CompanyId" />
+      <Column Name="Designation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LinkedinProfile" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_Consultant_Company_Company_Consultants" Member="Company" Type="Company" ThisKey="CompanyId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_Credential_Consultant_Consultant_Credentials" Member="Credentials" Type="Credential" ThisKey="Id" OtherKey="ConsultantId" />
+      <Association Name="FK_Consultant_Tenant_Tenant_Consultants" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Credential" Member="Credential">
+    <Type Name="Credential">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Consultant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="ConsultantId" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_Credential_Consultant_Consultant_Credentials" Member="Consultant" Type="Consultant" ThisKey="ConsultantId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_Credential_Tenant_Tenant_Credentials" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employer" Member="Employer">
+    <Type Name="Employer">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Account" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="AccountId" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsVerified" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_Project_Employer_Employer_Projects" Member="Projects" Type="Project" ThisKey="Id" OtherKey="EmployerId" />
+      <Association Name="FK_EmployerFeedback_Employer_Employer_FeedbackGiven" Member="FeedbackGiven" Type="EmployerFeedback" ThisKey="Id" OtherKey="EmployerId" />
+      <Association Name="FK_ProfileFeedback_Employer_Employer_FeedbackReceived" Member="FeedbackReceived" Type="ProfileFeedback" ThisKey="Id" OtherKey="EmployerId" />
+      <Association Name="FK_Employer_Account_Account_Employer_OneToOne" Member="Account" Type="Account" ThisKey="AccountId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_Employer_Tenant_Tenant_Employers" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployerFeedback" Member="EmployerFeedback">
+    <Type Name="EmployerFeedback">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="CompanyId" />
+      <Column Name="Employer" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="EmployerId" />
+      <Column Name="Project" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="ProjectId" />
+      <Column Name="Rating" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_EmployerFeedback_Company_Company_FeedbackReceived" Member="Company" Type="Company" ThisKey="CompanyId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_EmployerFeedback_Employer_Employer_FeedbackGiven" Member="Employer" Type="Employer" ThisKey="EmployerId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_EmployerFeedback_Project_Project_EmployerFeedback_OneToOne" Member="Project" Type="Project" ThisKey="ProjectId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_EmployerFeedback_Tenant_Tenant_EmployerFeedbacks" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortfolioEntry" Member="PortfolioEntry">
+    <Type Name="PortfolioEntry">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="CompanyId" />
+      <Column Name="Content" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Description" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Project" Type="System.Int64" DbType="BigInt" CanBeNull="true" Member="ProjectId" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_PortfolioEntry_Company_Company_Portfolio" Member="Company" Type="Company" ThisKey="CompanyId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_PortfolioEntry_Project_Project_PortfolioEntry_ZeroOneToZeroOne" Member="Project" Type="Project" ThisKey="ProjectId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_PortfolioEntry_Tenant_Tenant_PortfolioEntries" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProfileFeedback" Member="ProfileFeedback">
+    <Type Name="ProfileFeedback">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="CompanyId" />
+      <Column Name="Employer" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="EmployerId" />
+      <Column Name="Project" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="ProjectId" />
+      <Column Name="Rating" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_ProfileFeedback_Company_Company_FeedbackGiven" Member="Company" Type="Company" ThisKey="CompanyId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_ProfileFeedback_Employer_Employer_FeedbackReceived" Member="Employer" Type="Employer" ThisKey="EmployerId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_ProfileFeedback_Project_Project_ProfileFeedback_OneToOne" Member="Project" Type="Project" ThisKey="ProjectId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project" Member="Project">
+    <Type Name="Project">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Budget" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClosingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Currency" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DescriptionText" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Employer" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="EmployerId" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="Project_ProjectAttachmentMap" Member="ProjectAttachmentMap" ThisKey="Id" OtherKey="Attachment" Type="ProjectAttachmentMap" />
+      <Association Name="Project_ProjectTagMap" Member="ProjectTagMap" ThisKey="Id" OtherKey="Tag" Type="ProjectTagMap" />
+      <Association Name="FK_Project_Employer_Employer_Projects" Member="Employer" Type="Employer" ThisKey="EmployerId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_EmployerFeedback_Project_Project_EmployerFeedback_OneToOne" Member="EmployerFeedback" Type="EmployerFeedback" ThisKey="Id" OtherKey="ProjectId" Cardinality="One" />
+      <Association Name="FK_ProfileFeedback_Project_Project_ProfileFeedback_OneToOne" Member="ProfileFeedback" Type="ProfileFeedback" ThisKey="Id" OtherKey="ProjectId" Cardinality="One" />
+      <Association Name="FK_ProjectInvite_Project_Project_ProjectInvites" Member="ProjectInvites" Type="ProjectInvite" ThisKey="Id" OtherKey="ProjectId" />
+      <Association Name="FK_Bid_Project_Project_Bids" Member="Bids" Type="Bid" ThisKey="Id" OtherKey="ProjectId" />
+      <Association Name="FK_PortfolioEntry_Project_Project_PortfolioEntry_ZeroOneToZeroOne" Member="PortfolioEntry" Type="PortfolioEntry" ThisKey="Id" OtherKey="ProjectId" Cardinality="One" />
+      <Association Name="FK_Project_Tenant_Tenant_Projects" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectInvite" Member="ProjectInvite">
+    <Type Name="ProjectInvite">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="CompanyId" />
+      <Column Name="Project" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="ProjectId" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_ProjectInvite_Company_Company_ProjectInvites" Member="Company" Type="Company" ThisKey="CompanyId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_ProjectInvite_Project_Project_ProjectInvites" Member="Project" Type="Project" ThisKey="ProjectId" OtherKey="Id" IsForeignKey="true" />
+      <Association Name="FK_ProjectInvite_Tenant_Tenant_ProjectInvites" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tag" Member="Tag">
+    <Type Name="Tag">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Slug" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="Tag_ProjectTagMap" Member="ProjectTagMap" ThisKey="Id" OtherKey="Project" Type="ProjectTagMap" />
+      <Association Name="Tag_TagCompanyMap" Member="TagCompanyMap" ThisKey="Id" OtherKey="Company" Type="TagCompanyMap" />
+      <Association Name="FK_Tag_Tenant_Tenant_Tags" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Token" Member="Token">
+    <Type Name="Token">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Key" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tenant" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" Member="TenantId" />
+      <Association Name="FK_Token_Tenant_Tenant_Tokens" Member="Tenant" Type="Tenant" ThisKey="TenantId" OtherKey="Id" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tenant" Member="Tenant">
+    <Type Name="Tenant">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" CanBeNull="false" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DomainName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ViewStore" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Account_Tenant_Tenant_Accounts" Member="Accounts" Type="Account" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_AccountAlert_Tenant_Tenant_AccountAlerts" Member="AccountAlerts" Type="AccountAlert" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Attachment_Tenant_Tenant_Attachments" Member="Attachments" Type="Attachment" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Bid_Tenant_Tenant_Bids" Member="Bids" Type="Bid" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Company_Tenant_Tenant_Companies" Member="Companies" Type="Company" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Consultant_Tenant_Tenant_Consultants" Member="Consultants" Type="Consultant" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Credential_Tenant_Tenant_Credentials" Member="Credentials" Type="Credential" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Employer_Tenant_Tenant_Employers" Member="Employers" Type="Employer" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_EmployerFeedback_Tenant_Tenant_EmployerFeedbacks" Member="EmployerFeedbacks" Type="EmployerFeedback" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_PortfolioEntry_Tenant_Tenant_PortfolioEntries" Member="PortfolioEntries" Type="PortfolioEntry" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Project_Tenant_Tenant_Projects" Member="Projects" Type="Project" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_ProjectInvite_Tenant_Tenant_ProjectInvites" Member="ProjectInvites" Type="ProjectInvite" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Tag_Tenant_Tenant_Tags" Member="Tags" Type="Tag" ThisKey="Id" OtherKey="TenantId" />
+      <Association Name="FK_Token_Tenant_Tenant_Tokens" Member="Tokens" Type="Token" ThisKey="Id" OtherKey="TenantId" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectAttachmentMap" Member="ProjectAttachmentMap">
+    <Type Name="ProjectAttachmentMap">
+      <Column Name="Attachment" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" Member="AttachmentId" />
+      <Column Name="Project" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" Member="ProjectId" />
+      <Association Name="Project_ProjectAttachmentMap" Member="Attachment" ThisKey="AttachmentId" OtherKey="Id" Type="Project" IsForeignKey="true" />
+      <Association Name="Attachment_ProjectAttachmentMap" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Attachment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectTagMap" Member="ProjectTagMap">
+    <Type Name="ProjectTagMap">
+      <Column Name="Project" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" Member="ProjectId" />
+      <Column Name="Tag" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" Member="TagId" />
+      <Association Name="Tag_ProjectTagMap" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Tag" IsForeignKey="true" />
+      <Association Name="Project_ProjectTagMap" Member="Tag" ThisKey="TagId" OtherKey="Id" Type="Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TagCompanyMap" Member="TagCompanyMap">
+    <Type Name="TagCompanyMap">
+      <Column Name="Company" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" Member="CompanyId" />
+      <Column Name="Tag" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" Member="TagId" />
+      <Association Name="Tag_TagCompanyMap" Member="Company" ThisKey="CompanyId" OtherKey="Id" Type="Tag" IsForeignKey="true" />
+      <Association Name="Company_TagCompanyMap" Member="Tag" ThisKey="TagId" OtherKey="Id" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

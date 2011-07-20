@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Down for maintenance: CanYouCode.com</title>
+</head>
+<body style="background: #eee; font-family: Lucida Sans, Arial, Tahoma">
+    <div style="text-align: center; padding: 12px 32px 20px 32px; margin: auto; background: #fff;
+        width: 420px; height: 620px; margin-top: 20px">
+        <h1 style="color: #f60">
+            Can You Code?</h1>
+        <h2>
+            Down for maintenance.</h2>
+        <p>
+            <img src="http://imgs.xkcd.com/comics/hedgeclipper.jpg" alt="xkcd" />
+            <br />
+            <span style="font-size:11px">Image via <a href="http://www.xkcd.com">xkcd</a></span>
+        </p>
+        <p style="text-align:left">
+            Curious? You might find some information on <a href="http://blog.canyoucode.com">
+                our blog</a>.
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿hello {0},
+
+You have been invited to http://canyoucode.com/ by {0}
+
+Thank you,
+Team Canyoucode.

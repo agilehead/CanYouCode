@@ -1,0 +1,6 @@
+﻿hello {0},
+
+Bid for the Project {1} http://canyoucode.com/Projects/{2}, from {3}, Profile - http://canyoucode.com/{4} has been withdrawn.
+
+Thank you,
+Team Canyoucode.
